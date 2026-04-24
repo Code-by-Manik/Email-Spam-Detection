@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Spam Detection Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>Email Spam Detection <span class="highlight">Project</span></h1>
+            </div>
+        </header>
+
+        <main>
+            <div class="glass-panel main-panel">
+                <form id="spam-form">
+                    <div class="input-group">
+                        <label for="email-text">
+                            <i class="fa-regular fa-envelope"></i> Analyze Email Content
+                        </label>
+                        <div class="textarea-wrapper">
+                            <textarea id="email-text" name="text" rows="8" placeholder="Paste the email or message content here to analyze its authenticity..." required></textarea>
+                            <div class="scanning-line"></div>
+                        </div>
+                    </div>
+                    <div class="action-row">
+                        <button type="button" id="clear-btn" class="btn-secondary">
+                            <i class="fa-solid fa-eraser"></i> Clear
+                        </button>
+                        <button type="submit" id="analyze-btn" class="btn-primary">
+                            <span>Analyze Content</span>
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="result-container hidden" id="result-box">
+                <div class="glass-panel result-panel">
+                    <div class="result-header">
+                        <h2>Analysis Result</h2>
+                        <div class="status-indicator" id="status-indicator">
+                            <div class="ping"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-content">
+                        <div class="prediction-circle" id="prediction-circle">
+                            <span class="prediction-text" id="prediction-text">--</span>
+                        </div>
+                        
+                        <div class="confidence-section">
+                            <div class="confidence-header">
+                                <span>Confidence Score</span>
+                                <span id="confidence-value" class="confidence-value">--%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" id="confidence-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="insight-box" id="insight-box">
+                        <i class="fa-solid fa-circle-info" id="insight-icon"></i>
+                        <p id="insight-text">Awaiting analysis...</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+        </footer>
+    </div>
+
+    <div class="loader-overlay hidden" id="loader">
+        <div class="cyber-loader">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="shadow"></div>
+            <div class="shadow"></div>
+            <div class="shadow"></div>
+            <span>ANALYZING THREATS...</span>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
